@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microstrip Patch Antenna Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Microstrip Patch Antenna Calculator</h1>
+        <form method="post">
+            <label for="frequency">Enter Frequency (GHz, MHz, Hz):</label>
+            <input type="text" name="frequency" required>
+            
+            <label for="dielectric">Enter Dielectric Constant:</label>
+            <input type="text" name="dielectric" required>
+            
+            <label for="height">Enter Substrate Height (mm, mil):</label>
+            <input type="text" name="height" required>
+            
+            <button type="submit">Calculate</button>
+        </form>
+        
+        {% if width and length and feed_point %}
+        <div class="results">
+            <h2>Results</h2>
+            <p><strong>Width (mm):</strong> {{ width }}</p>
+            <p><strong>Length (mm):</strong> {{ length }}</p>
+            <p><strong>Feed Point Location (mm):</strong> {{ feed_point }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
