@@ -22,12 +22,18 @@
             <button type="submit">Calculate</button>
         </form>
         
-        {% if width and length and feed_point %}
+        {% if error %}
+        <div class="error">
+            <p style="color: red; font-weight: bold;">{{ error }}</p>
+        </div>
+        {% endif %}
+        
+        {% if width is not none and length is not none and feed_point is not none %}
         <div class="results">
             <h2>Results</h2>
-            <p><strong>Width (mm):</strong> {{ width }}</p>
-            <p><strong>Length (mm):</strong> {{ length }}</p>
-            <p><strong>Feed Point Location (mm):</strong> {{ feed_point }}</p>
+            <p><strong>Width (mm):</strong> {{ "{:.2f}".format(width) }}</p>
+            <p><strong>Length (mm):</strong> {{ "{:.2f}".format(length) }}</p>
+            <p><strong>Feed Point Location (mm):</strong> {{ "{:.2f}".format(feed_point) }}</p>
         </div>
         {% endif %}
     </div>
